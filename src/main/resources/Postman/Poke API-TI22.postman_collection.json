@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "097da5e4-b92a-426e-af73-ed2143114f98",
+		"name": "Poke API-TI22",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Buscar Todos Pokémons",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Pokémons Pelo Nome",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar Pokemon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Raichu\",\r\n    \"tipo\": \"Eletrico\",\r\n    \"altura\": 8,\r\n    \"peso\": 30,\r\n    \"level\": 80\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/poke-api/api/v1/pokemons",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"poke-api",
+						"api",
+						"v1",
+						"pokemons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover Pokémon Por ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/poke-api/api/v1/pokemons",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"poke-api",
+						"api",
+						"v1",
+						"pokemons"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
