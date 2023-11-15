@@ -16,3 +16,5 @@ spring:
   h2:
     console:
       enabled: true
+
+pokemon-external-api: https://pokeapi.co/api/v2/pokemon

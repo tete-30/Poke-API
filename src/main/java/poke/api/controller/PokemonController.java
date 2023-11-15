@@ -3,6 +3,7 @@ package poke.api.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import poke.api.integration.response.PokemonResponse;
 import poke.api.model.Pokemon;
 import poke.api.service.PokemonService;
 
@@ -24,7 +25,7 @@ public class PokemonController {
         return ResponseEntity.ok(this.pokemonService.buscarTodos());
     }
 
-    @GetMapping({"/nome"})
+    @GetMapping({"/nome/{nome}"})
     public ResponseEntity<Pokemon> buscarPokemonPeloNome(String nome){
         Pokemon pokemonBuscado = this.pokemonService.buscarPeloNome(nome);
         return ResponseEntity.ok(pokemonBuscado);
@@ -41,5 +42,25 @@ public class PokemonController {
         Pokemon pokemonRemovido = pokemonService.removerPorId(id);
         return ResponseEntity.ok(pokemonRemovido);
     }
+    @DeleteMapping("/nome/{nome}")
+    public ResponseEntity<Pokemon> removerPokemonPorNome(@PathVariable("nome") String nome) {
+        Pokemon pokemonRemovido = pokemonService.removerPorNome(nome);
+        return ResponseEntity.ok(pokemonRemovido);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Pokemon> alterarNomeTipo(@PathVariable Long id, @RequestBody Pokemon pokemonAtualizado) {
+        Pokemon pokemonAlterado = pokemonService.alterarNomeETipo(id, pokemonAtualizado);
+        return ResponseEntity.ok(pokemonAlterado);
+    }
+
+    @GetMapping({"/{id}"})
+    public ResponseEntity<Pokemon> buscarPokemonPorId(@PathVariable("id") Long id) {
+        Pokemon pokemonBuscado = this.pokemonService.buscarPorId(id);
+        return ResponseEntity.ok(pokemonBuscado);
+    }
+
+
+
 
 }
