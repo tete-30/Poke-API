@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import poke.api.integration.response.PokemonResponse;
 import poke.api.integration.service.PokemonIntegrationService;
 import poke.api.model.Pokemon;
+import poke.api.model.dto.PokemonRequestDTO;
 import poke.api.service.PokemonService;
 
 import java.util.List;
@@ -44,8 +45,8 @@ public class PokemonController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> adicionarPokemon (@RequestBody Pokemon pokemon) {
-        pokemonService.adicionar(pokemon);
+    public ResponseEntity<Void> adicionarPokemon (@RequestBody PokemonRequestDTO pokemonRequest) {
+        pokemonService.adicionar(pokemonRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -69,6 +70,11 @@ public class PokemonController {
     public ResponseEntity<Pokemon> buscarPokemonPorId(@PathVariable("id") Long id) {
         Pokemon pokemonBuscado = this.pokemonService.buscarPorId(id);
         return ResponseEntity.ok(pokemonBuscado);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> quantidaDePokemons(){
+        return ResponseEntity.ok(this.pokemonService.contar());
     }
 
 
